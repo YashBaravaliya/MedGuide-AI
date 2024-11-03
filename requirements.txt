@@ -195,8 +195,8 @@ posthog==3.5.0
 prometheus_client==0.20.0
 prompt_toolkit==3.0.47
 prompthub-py==4.0.0
-proto-plus==1.24.0
-protobuf==5.27.3
+proto-plus
+protobuf
 psutil==6.0.0
 pure_eval==0.2.3
 py2neo==2021.2.4
