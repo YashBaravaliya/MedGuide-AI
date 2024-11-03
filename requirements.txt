@@ -154,9 +154,7 @@ nbformat==5.10.4
 neo4j==5.14.0
 nest-asyncio==1.6.0
 networkx==3.3
-nltk==3.8.2
-notebook==7.2.2
-notebook_shim==0.2.4
+nltk
 num2words==0.5.13
 numpy==1.26.4
 oauthlib==3.2.2
