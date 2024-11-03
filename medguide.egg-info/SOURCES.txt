@@ -1,0 +1,8 @@
+README.md
+setup.py
+medguide.egg-info/PKG-INFO
+medguide.egg-info/SOURCES.txt
+medguide.egg-info/dependency_links.txt
+medguide.egg-info/top_level.txt
+src/__init__.py
+src/process_medicine_data.py
