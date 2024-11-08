@@ -2,6 +2,7 @@ import streamlit as st
 from utils.pubmed_utils import fetch_pubmed_articles
 from utils.medicine_utils import search_medicine
 from utils.pdf_utils import generate_pdf
+from utils.agents import HealthcareSearchAgent
 from models.llm_chain import create_llm_chain
 from ui.custom_css import apply_custom_css
 import requests
@@ -105,7 +106,12 @@ def generate_answer(question):
     except Exception as e:
         st.error(f"An error occurred: {str(e)}")
         return None, None, False, None, None
-
+    
+def seach_query(query):
+    healthcare_search = HealthcareSearchAgent()
+    result = healthcare_search.search(query)
+    return result
+    
 # Streamlit UI
 st.title("MedGuide Chat")
 
@@ -118,7 +124,7 @@ with col1:
     
     # Chat input
     user_input = st.chat_input("Type your message here...")
-    
+
     # Display chat messages
     for message in reversed(st.session_state.messages):  # try to revresed the massages
         with st.chat_message(message["role"]):
@@ -140,6 +146,7 @@ with col1:
                 assistant_message = {
                     "role": "assistant",
                     "content": answer,
+                    "user_input": user_input,
                     # "image_data": image_data if image_data else []
                     "medicine_results": medicine_results if is_medicine_query else None
                 }
@@ -197,3 +204,23 @@ with col2:
                     # st.write(f"Category: {alt_med.get('Category', 'N/A')}")
     else:
         st.write("No specific medication information is available for the current query. Ask about a medicine to see details here.")
+
+    try:
+        search = st.session_state.messages[-1]["user_input"]
+        print(f"this is seach: {search}")
+        st.write(search)
+        st.subheader("Search for medical sources related to the current query:")
+        # Initialize the search system
+        healthcare_search = HealthcareSearchAgent()
+        result = healthcare_search.search(search)
+        
+        # Print results
+        if result["status"] == "success":
+            # st.subheader("Top 3 Medical Sources:")
+            for i, res in enumerate(result["results"], 1):
+                st.markdown(f"{i}. URL: {res['url'].split(' ')[1]}")
+                st.markdown(f"Summary: {res['summary']}")
+        else:
+            st.error(f"Error: {result['message']}")
+    except Exception as e:
+        pass

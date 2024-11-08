@@ -1,54 +1,131 @@
 import streamlit as st
+from utils.ayurvedic_utils import analyze_dosha, get_remedies
+from models.llm_chain import create_ayurvedic_llm_chain
+import json
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
-
-# Function to generate AI response (placeholder)
-def get_ai_response(user_input):
-    return f"AI: I received your message: '{user_input}'"
-
-# Layout
-st.title("Medical Chatbot with Split Layout")
-
-# Create two columns
-col1, col2 = st.columns([4, 2])
-
-# Column 1: Chatbot
-with col1:
-    st.subheader("Chatbot")
-    # Chat input
-    user_input = st.chat_input("Type your message here...")
-
-    # Display chat messages
-    for message in reversed(st.session_state.messages):
-        with st.chat_message(message["role"]):
-            st.write(message["content"])
-
-    if user_input:
-        # Add user message to chat history
-        st.session_state.messages.append({"role": "user", "content": user_input})
-
-        # Generate and add AI response
-        ai_response = get_ai_response(user_input)
-        st.session_state.messages.append({"role": "assistant", "content": ai_response})
-
-        # Force a rerun to update the chat display
-        st.rerun()
-
-# Column 2: Medication Information
-with col2:
-    st.subheader("Medication Information")
-    
-    # Sample medication data
-    medications = {
-        "Aspirin": "Used for pain relief and reducing inflammation.",
-        "Ibuprofen": "Used for pain, fever, and inflammation.",
-        "Paracetamol": "Used for pain relief and fever reduction.",
+# Custom CSS with Ayurvedic theme
+custom_style = """
+    <style>
+    /* Sidebar styling with earthy colors */
+    [data-testid="stSidebar"] {
+        background-color: #1a1f2d;
+        color:white;
     }
     
-    # Display medication information
-    selected_medication = st.selectbox("Select a medication:", list(medications.keys()))
-    st.write(f"**{selected_medication}**: {medications[selected_medication]}")
+    /* Main content styling */
+    .main {
+        background-color: #eff3f8;
+        color: black;
+    }
     
-    st.write("This space includes information on various medications. You can select a medication from the list to learn more about it.")
+    /* Container styling */
+    [data-testid="stAppViewBlockContainer"] {
+        background-color: #fefefe;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 6px rgba(139, 69, 19, 0.1);
+        color:black;
+    }
+
+    /* Sidebar navigation styling */
+    div[data-testid="stSidebarNav"] li div a span {
+        color: white;
+        padding: 0.5rem;
+        width: 300px;
+        border-radius: 0.5rem;
+    }
+
+    div[data-testid="stSidebarNav"] li div::focus-visible {
+        background-color: rgba(151, 166, 195, 0.15);
+    }
+
+    /* Custom header for sidebar */
+    [data-testid="stSidebarNav"]::before {
+        content: "💊 MedGuide AI 🧑🏻‍⚕️";
+        margin-left: 20px;
+        margin-top: 20px;
+        font-size: 30px;
+        position: relative;
+        top: -50px;
+        # color: #F5DEB3;
+    }
+
+    /* Custom styling for headers */
+    h1, h2, h3 {
+        font-family: 'Helvetica Neue', sans-serif;
+    }
+
+    /* Custom card styling */
+    .dosha-card {
+        # background-color: #FFF;
+        padding: 20px;
+        border-radius: 10px;
+        border-left: 5px solid #8B4513;
+        margin: 10px 0;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    </style>
+"""
+
+st.markdown(custom_style, unsafe_allow_html=True)
+import streamlit as st
+import pandas as pd
+import os
+from langchain.chains import LLMChain
+from langchain.prompts import PromptTemplate
+from langchain_groq import ChatGroq
+from dotenv import load_dotenv
+from datetime import datetime, timedelta
+import json
+
+# Load environment variables
+load_dotenv()
+
+
+
+# Enhanced Custom CSS
+st.markdown("""
+<style>
+    .stSelectbox, .stMultiSelect {
+        margin-bottom: 1rem;
+    }
+    .exercise-card {
+        background-color: #f8f9fa;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .main-header {
+        color: #1f77b4;
+        margin-bottom: 2rem;
+    }
+    .ai-response {
+        background-color: #e3f2fd;
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin: 1rem 0;
+        border-left: 4px solid #1976d2;
+    }
+    .day-card {
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        margin: 0.5rem 0;
+        border: 1px solid #ddd;
+    }
+    .muscle-tag {
+        background-color: #e0e0e0;
+        padding: 0.2rem 0.5rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+        font-size: 0.9em;
+    }
+    .weekly-schedule {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 1rem;
+        padding: 1rem;
+    }
+</style>
+""", unsafe_allow_html=True)

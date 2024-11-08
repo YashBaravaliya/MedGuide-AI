@@ -31,9 +31,10 @@ def create_llm_chain():
         - **Simplified Summary:** Provide a brief, simplified summary of the information for patients who may need a quick overview.
         - **Professional Tone:** Maintain a professional, empathetic, and reassuring tone throughout your response.
         - **Alternative Ayurvedic Medicine:** Suggest an alternative medicine or treatment option if applicable, including its Ayurvedic plant name and their usecase which is most relative to patients problems.
+        - **Ayurvedic Plant Composition:** Include the composition of the Ayurvedic plants in the alternative medicine, highlighting their key properties and benefits and how they can be used in the treatment.
         
         **Final Answer:**
-        Please generate a response that combines the detailed medical information, relevant research insights, and patient-friendly advice based on the information provided above. Include information about the Ayurvedic plants in the composition and suggest an alternative medicine or treatment option at the end of your response.
+        Please generate a response that combines the detailed medical information, relevant research insights, and patient-friendly advice based on the information provided above. Include information about the Ayurvedic plants in the composition and suggest an alternative medicine or treatment option at the end of your response. Ensure that the response is accurate, clear, and patient-focused. 
         """
     )
 

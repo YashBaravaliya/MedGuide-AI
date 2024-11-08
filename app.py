@@ -148,7 +148,7 @@ def container_click(container_name, operation, image_path):
 image_1 = "img//consultation.png"  # Replace with your image URL or local path
 image_2 = "img//thymine.png"
 image_3 = "img//formula.png"
-image_4 = "img//herbal-treatment.png"
+image_4 = "img//program.png"
 image_5 = "img//capsules.png"
 
 # Create columns for the first row with 3 containers

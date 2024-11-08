@@ -55,3 +55,4 @@ custom_style = """
 # Apply the CSS
 st.markdown(custom_style, unsafe_allow_html=True)
 
+
