@@ -197,3 +197,19 @@ def create_ayurvedic_llm_chain():
     )
 
     return LLMChain(llm=llm, prompt=prompt_template)
+
+def gym_llm_chain(template):
+    GROQ_API_KEY = os.getenv('GROQ_API_KEY')
+    llm = ChatGroq(
+        groq_api_key=GROQ_API_KEY,
+        model_name="gemma-7b-it",
+        temperature=0.5,
+        max_tokens=500
+    )
+    
+    prompt = PromptTemplate(
+        input_variables=template["variables"],
+        template=template["content"]
+    )
+    
+    return LLMChain(llm=llm, prompt=prompt)

@@ -55,7 +55,7 @@ custom_style = """
 # Apply the CSS
 st.markdown(custom_style, unsafe_allow_html=True)
 
-import streamlit as st
+# import streamlit as st
 
 # st.set_page_config(layout="wide")
 
@@ -118,7 +118,7 @@ def operation_3():
     st.switch_page("./pages/2_Reasearch.py")
 
 def operation_4():
-    st.switch_page("./pages/3_Ayurvedic_Consultations.py")
+    st.switch_page("./pages/3_Physio_Planner.py")
 
 def operation_5():
     st.switch_page("./pages/4_MediRegistry.py")
@@ -167,9 +167,9 @@ with col3:
 col4, col5 = st.columns(2)
 
 with col4:
-    container_click("Ayurvedic Consultations", operation_4,image_4)
+    container_click("Physio Planner", operation_4,image_4)
 
 with col5:
-    container_click("MediRegistry", operation_5,image_5)
+    container_click("MediScan", operation_5,image_5)
 
 
