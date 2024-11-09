@@ -50,7 +50,7 @@ MedGuide Chat is an interactive healthcare assistance application built with Str
 ### Technology Stack
 
 - **Streamlit**: For the web interface and chat interaction.
-- **Groq API**: Used to run the language model with Groq's hardware acceleration. [more info](knowledge_base\\medGuideChat.md)
+- **Groq API**: Used to run the language model with Groq's hardware acceleration. [more info](knowledge_base/medGuideChat.md)
 - **Python**: Backend logic and data processing.
 - **RDKit**: For handling chemical structures.
 - **PubMed API**: To fetch reliable, research-backed medical articles.
