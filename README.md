@@ -6,7 +6,7 @@ MedGuide AI is a Streamlit-based application that integrates multiple healthcare
 
 ## Overview
 
-![Dashboard](https://github.com/YashBaravaliya/MedGuide-AI/tree/main/img/ss/Dashboard.png)
+![image](img/ss/Dashboard.png)
 
 The MedGuide AI dashboard offers the following main features:
 
@@ -32,8 +32,9 @@ MedGuide Chat is an interactive healthcare assistance application built with Str
 
 #### 1.2. Medication Information Panel
 
-![img](https://github.com/YashBaravaliya/MedGuide-AI/tree/main/img/ss/medGuideChat1.png)
-![img](https://github.com/YashBaravaliya/MedGuide-AI/tree/main/img/ssmedGuideChat2.png)
+![image](img/ss/medGuideChat1.png)
+![image](img/ss/medGuideChat2.png)
+
 - **Primary Medicine Details**: View comprehensive information on the primary medicine found for the query, including:
   - Uses
   - Composition
@@ -43,7 +44,8 @@ MedGuide Chat is an interactive healthcare assistance application built with Str
   
 #### 1.3. Healthcare Source Search
 
-![img](https://github.com/YashBaravaliya/MedGuide-AI/tree/main/img/ss/medGuideChat3.png)
+![image](img/ss/medGuideChat3.png)
+
 - **HealthcareSearchAgent**: Searches medical sources relevant to the query and provides URLs and summaries of useful articles, making it easier to verify information and read further.
 
   
