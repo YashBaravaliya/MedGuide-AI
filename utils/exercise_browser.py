@@ -71,6 +71,7 @@ def display_exercises(filtered_data):
                 with cols[0]:
                     st.subheader(row['name'])
                     st.markdown(f"**Level:** {row['level']} | **Equipment:** {row['equipment']}")
+                    st.markdown(f"**Target Muscles:** {row['primaryMuscles']} | **Secondary Muscles:** {row['secondaryMuscles']}")
                     
                     instructions = row['instructions']
                     if isinstance(instructions, str):

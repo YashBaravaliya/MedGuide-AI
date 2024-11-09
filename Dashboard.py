@@ -145,11 +145,11 @@ def container_click(container_name, operation, image_path):
         operation()
 
 # Image URLs or paths for containers
-image_1 = "img//consultation.png"  # Replace with your image URL or local path
-image_2 = "img//thymine.png"
-image_3 = "img//formula.png"
-image_4 = "img//program.png"
-image_5 = "img//capsules.png"
+image_1 = "img//icons//consultation.png"  # Replace with your image URL or local path
+image_2 = "img//icons//thymine.png"
+image_3 = "img//icons//formula.png"
+image_4 = "img//icons//program.png"
+image_5 = "img//icons//capsules.png"
 
 # Create columns for the first row with 3 containers
 col1, col2, col3 = st.columns(3)

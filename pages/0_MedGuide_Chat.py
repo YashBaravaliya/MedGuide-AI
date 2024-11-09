@@ -126,7 +126,7 @@ with col1:
     user_input = st.chat_input("Type your message here...")
 
     # Display chat messages
-    for message in reversed(st.session_state.messages):  # try to revresed the massages
+    for message in st.session_state.messages:  # try to revresed the massages
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
             if "image_data" in message:
@@ -155,20 +155,20 @@ with col1:
                 st.session_state.messages.append(assistant_message)
                 
                 # Display assistant response in chat message container
-                with st.chat_message("assistant"):
-                    st.markdown(answer)
-                    if is_medicine_query and image_data:
-                        for caption, url in image_data:
-                            st.image(url, caption=caption, use_column_width=True)
-                    if is_medicine_query and pdf_buffer:
-                        st.download_button(
-                            label="Download Full Medicine Information",
-                            data=pdf_buffer,
-                            file_name=f"{medicine_results['primary']['Name']}.pdf",
-                            mime="application/pdf"
-                        )
-                    elif not is_medicine_query:
-                        st.info("No specific medicine information found in the database. This response is based on general AI knowledge.")
+                # with st.chat_message("assistant"):
+                #     st.markdown(answer)
+                #     if is_medicine_query and image_data:
+                #         for caption, url in image_data:
+                #             st.image(url, caption=caption, use_column_width=True)
+                #     if is_medicine_query and pdf_buffer:
+                #         st.download_button(
+                #             label="Download Full Medicine Information",
+                #             data=pdf_buffer,
+                #             file_name=f"{medicine_results['primary']['Name']}.pdf",
+                #             mime="application/pdf"
+                #         )
+                #     elif not is_medicine_query:
+                #         st.info("No specific medicine information found in the database. This response is based on general AI knowledge.")
             else:
                 st.error("Sorry, I couldn't generate an answer. Please try rephrasing your question.")
         
@@ -208,7 +208,6 @@ with col2:
     try:
         search = st.session_state.messages[-1]["user_input"]
         print(f"this is seach: {search}")
-        st.write(search)
         st.subheader("Search for medical sources related to the current query:")
         # Initialize the search system
         healthcare_search = HealthcareSearchAgent()
@@ -216,7 +215,6 @@ with col2:
         
         # Print results
         if result["status"] == "success":
-            # st.subheader("Top 3 Medical Sources:")
             for i, res in enumerate(result["results"], 1):
                 st.markdown(f"{i}. URL: {res['url'].split(' ')[1]}")
                 st.markdown(f"Summary: {res['summary']}")
