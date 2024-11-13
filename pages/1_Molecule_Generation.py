@@ -61,7 +61,7 @@ def call_nvidia_api(payload, test_mode=False):
     invoke_url = "https://health.api.nvidia.com/v1/biology/nvidia/molmim/generate"
     headers = {
         # "Authorization": "Bearer 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",
-        "Authorization": "Bearer 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",
+        "Authorization": "Bearer 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",
         "Accept": "application/json",
     }
     session = requests.Session()

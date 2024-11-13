@@ -121,7 +121,7 @@ def operation_4():
     st.switch_page("./pages/3_Physio_Planner.py")
 
 def operation_5():
-    st.switch_page("./pages/4_MediRegistry.py")
+    st.switch_page("./pages/4_Nearby_Amenities.py")
 
 # Function to convert image to base64
 def image_to_base64(image_path):
@@ -149,7 +149,7 @@ image_1 = "img//icons//consultation.png"  # Replace with your image URL or local
 image_2 = "img//icons//thymine.png"
 image_3 = "img//icons//formula.png"
 image_4 = "img//icons//program.png"
-image_5 = "img//icons//capsules.png"
+image_5 = "img//icons//hospital1.png"
 
 # Create columns for the first row with 3 containers
 col1, col2, col3 = st.columns(3)
@@ -170,6 +170,4 @@ with col4:
     container_click("Physio Planner", operation_4,image_4)
 
 with col5:
-    container_click("MediScan", operation_5,image_5)
-
-
+    container_click("Nearby Amenities", operation_5,image_5)
