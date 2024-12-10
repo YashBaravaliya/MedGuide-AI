@@ -106,21 +106,21 @@ This module integrates with PubMed to fetch top scientific articles relevant to 
 - **User Benefits**: A valuable resource for medical professionals, researchers, and students.
 
 
-![Research Screenshot](img/ss/research.png)
+![Research Screenshot](img/ss/Research.png)
 ---
 
 ## **4. Physio Planner**
 
 An intelligent physiotherapy planning system tailored to user-specific health conditions.
 
-![Physio Screenshot](img/ss/physio.png)
-![Physio Screenshot](img/ss/physio2.png)
+![Physio Screenshot](img/ss/Physio.png)
+![Physio Screenshot](img/ss/Physio2.png)
 
 - **Custom Recommendations**: Generates exercise and rehabilitation plans based on user inputs.
 - **Dynamic Adjustments**: Incorporates feedback to refine plans over time.
 - **User-Friendly Design**: Helps users improve their physical health with personalized guidance.
 
-![Physio Screenshot](img/ss/physio3.png)
+![Physio Screenshot](img/ss/Physio3.png)
 
 ---
 
