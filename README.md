@@ -4,6 +4,37 @@ MedGuide AI is a **Streamlit-based application** integrating multiple healthcare
 
 ---
 
+## **1. Installation Guide**
+
+Follow these steps to set up and run the MedGuide AI application:
+
+1. **Clone the Repository**  
+   ```bash
+   git clone <repository_url>
+   cd MedGuide-AI
+   ```
+
+2. **Create a Virtual Environment**  
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Linux/Mac
+   venv\Scripts\activate     # For Windows
+   ```
+
+3. **Install Dependencies**  
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Run the Application**  
+   ```bash
+   streamlit run app.py
+   ```
+
+5. **Access the Dashboard**  
+   Open your browser and navigate to the URL displayed in the terminal (usually `http://localhost:8501`).
+
+
 ## **Overview**
 
 ![Dashboard Screenshot](img/ss/Dashboard.png)
