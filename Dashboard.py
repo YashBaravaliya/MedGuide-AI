@@ -41,7 +41,7 @@ custom_style = """
         background-color: rgba(151, 166, 195, 0.15);
     }
     [data-testid="stSidebarNav"]::before {
-                content: "💊 MedGuide AI 🧑🏻‍⚕️";
+                content: "WellHealthVerseAi 🩺";
                 margin-left: 20px;
                 margin-top: 20px;
                 font-size: 30px;
@@ -104,7 +104,7 @@ container_style = """
 st.markdown(container_style, unsafe_allow_html=True)
 
 # Add app name at the top
-st.markdown('<div class="app-name">MedGuide AI Dashboard</div>', unsafe_allow_html=True)
+st.markdown('<div class="app-name">WellHealthVerseAi Dashboard</div>', unsafe_allow_html=True)
 
 
 # Define callback functions for each container

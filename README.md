@@ -1,63 +1,126 @@
 # MedGuide AI Dashboard
 
-MedGuide AI is a Streamlit-based application that integrates multiple healthcare modules, providing a versatile tool for medical information retrieval, molecular analysis, research support, and physiotherapy planning. This AI-driven tool leverages language models, PubMed research integration, and a custom FAISS index for optimized medicine suggestions, including Ayurvedic alternatives.
+MedGuide AI is a **Streamlit-based application** integrating multiple healthcare modules to provide a versatile tool for medical information retrieval, molecular analysis, research support, and physiotherapy planning. It leverages **advanced language models**, **PubMed integration**, and a custom **FAISS index** for optimized medicine suggestions, including **Ayurvedic alternatives**.
 
 ---
 
-## Overview
+## **Overview**
 
-![image](img/ss/Dashboard.png)
+![Dashboard Screenshot](img/ss/Dashboard.png)
 
-The MedGuide AI dashboard offers the following main features:
+The MedGuide AI dashboard includes the following key features:
 
-- **MedGuide Chat**: Provides answers for medical questions using PubMed research articles and suggests Ayurvedic alternatives when available.
-- **Molecule Generation**: Allows users to visualize molecular structures.
-- **Research Support**: Assists in retrieving top scientific articles from PubMed related to healthcare topics.
-- **Physio Planner**: Helps users create custom physiotherapy plans.
-- **MediScan**: user can upload there medicine and get details about 
+- **MedGuide Chat**: Provides reliable answers to medical queries using PubMed research articles and suggests Ayurvedic alternatives where available.
+- **Molecule Generation**: Visualizes molecular structures for pharmaceutical research.
+- **Research Support**: Retrieves top scientific articles from PubMed related to healthcare topics.
+- **Physio Planner**: Offers custom physiotherapy plans tailored to users' health conditions.
+- **MediScan**: Allows users to upload a medicine image and receive detailed information about it.
 
+---
 
-## 1. MedGuide Chat
+## **1. MedGuide Chat**
 
-MedGuide Chat is an interactive healthcare assistance application built with Streamlit. It helps users find reliable information on medications, symptoms, and related medical topics. The chatbot leverages advanced language models, medical databases, and PubMed resources to provide comprehensive and accurate responses.
+MedGuide Chat serves as an interactive healthcare assistant, offering comprehensive information about medications, symptoms, and related topics. It integrates **PubMed resources** and language models to deliver accurate responses.
 
-### Features
+### **Features**
 
-#### 1.1. Interactive Chatbot
+#### **1.1 Interactive Chatbot**
 
-- **Conversational Interface**: Type questions related to medicines, symptoms, or general healthcare inquiries, and receive detailed, contextual answers.
-- **Medicine-Specific Responses**: If a medication is found, the chatbot displays information on its uses, side effects, composition, and manufacturer.
-- **Alternative Options**: If available, alternative medicines are suggested along with images.
-- **Downloadable Reports**: Users can download a PDF report containing detailed information about the medication.
-
-#### 1.2. Medication Information Panel
-
-![image](img/ss/medGuideChat1.png)
-![image](img/ss/medGuideChat2.png)
-
-- **Primary Medicine Details**: View comprehensive information on the primary medicine found for the query, including:
+- **Conversational Interface**: Users can type medical questions and receive detailed answers.
+- **Medicine-Specific Information**: Provides data about:
   - Uses
   - Composition
-  - Manufacturer
   - Side effects
-- **Alternative Medicines**: Suggestions with images, giving users options beyond the primary medicine.
-  
-#### 1.3. Healthcare Source Search
+  - Manufacturer
+- **Alternative Options**: Suggests alternative medicines with accompanying images.
+- **Downloadable Reports**: Generates PDF reports containing medication details.
 
-![image](img/ss/medGuideChat3.png)
+#### **1.2 Medication Information Panel**
 
-- **HealthcareSearchAgent**: Searches medical sources relevant to the query and provides URLs and summaries of useful articles, making it easier to verify information and read further.
+![Chat Screenshot 1](img/ss/medGuideChat1.png)  
+![Chat Screenshot 2](img/ss/medGuideChat2.png)
 
-  
-### Technology Stack
+- **Primary Medicine Details**: Comprehensive insights into the queried medication, including usage, side effects, and more.
+- **Alternative Medicines**: Displays options for similar medications, empowering users with choices.
 
-- **Streamlit**: For the web interface and chat interaction.
-- **Groq API**: Used to run the language model with Groq's hardware acceleration. [more info](knowledge_base/medGuideChat.md)
-- **Python**: Backend logic and data processing.
-- **RDKit**: For handling chemical structures.
-- **PubMed API**: To fetch reliable, research-backed medical articles.
-- **Custom Libraries and Utils**:
-  - `pubmed_utils` for article fetching
-  - `medicine_utils` for medication search
-  - `pdf_utils` for generating PDF reports
-  - `llm_chain` for generating responses with language models
+#### **1.3 Healthcare Source Search**
+
+![Chat Screenshot 3](img/ss/medGuideChat3.png)
+
+- **HealthcareSearchAgent**: Fetches URLs and summaries from relevant medical articles for further reading and verification.
+
+---
+
+## **2. Molecule Generation**
+
+A feature aimed at pharmaceutical research and drug discovery, allowing users to visualize molecular structures.
+
+![Molecule Screenshot](img/ss/molecule.png)
+
+- **SMILES Notation Input**: Converts molecular names into visual chemical structures.
+- **Application in Research**: Facilitates the design and understanding of new pharmaceutical compounds.
+- **Powered by**: 
+  - **Groq API** for accelerated computations.
+  - **RDKit** for chemical structure visualization.
+
+![Molecule Screenshot](img/ss/molecule2.png)
+---
+
+## **3. Research Support**
+
+This module integrates with PubMed to fetch top scientific articles relevant to healthcare topics.
+
+- **Efficient Article Retrieval**: Extracts and summarizes research findings using the PubMed API.
+- **Research Validation**: Supports evidence-based practices by providing access to verified medical studies.
+- **User Benefits**: A valuable resource for medical professionals, researchers, and students.
+
+
+![Research Screenshot](img/ss/research.png)
+---
+
+## **4. Physio Planner**
+
+An intelligent physiotherapy planning system tailored to user-specific health conditions.
+
+![Physio Screenshot](img/ss/physio.png)
+![Physio Screenshot](img/ss/physio2.png)
+
+- **Custom Recommendations**: Generates exercise and rehabilitation plans based on user inputs.
+- **Dynamic Adjustments**: Incorporates feedback to refine plans over time.
+- **User-Friendly Design**: Helps users improve their physical health with personalized guidance.
+
+![Physio Screenshot](img/ss/physio3.png)
+
+---
+
+## **5. MediScan**
+
+MediScan allows users to upload images of medicines and retrieve detailed information, such as:
+
+- Name, composition, and manufacturer.
+- Usage instructions and possible side effects.
+- Ayurvedic or alternative medicine options.
+
+---
+
+## **Technology Stack**
+
+### **Frontend**
+- **Streamlit**: Provides an intuitive and responsive web interface.
+
+### **Backend**
+
+- **Python**: Handles backend logic, including data processing and API calls.
+
+### **Utilities**
+- **RDKit**: For managing chemical structures in molecular generation.
+- **PubMed API**: Fetches scientific research articles.
+- **Custom Libraries**:
+  - `pubmed_utils`: For retrieving PubMed articles.
+  - `medicine_utils`: Searches for medication details and alternatives.
+  - `pdf_utils`: Generates downloadable PDF reports.
+  - `llm_chain`: Powers the chatbot responses using language models.
+
+---
+
+MedGuide AI provides a holistic healthcare solution, blending advanced AI technologies with practical healthcare applications to serve patients, professionals, and researchers alike.

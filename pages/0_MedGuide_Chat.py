@@ -126,7 +126,7 @@ with col1:
     user_input = st.chat_input("Type your message here...")
 
     # Display chat messages
-    for message in st.session_state.messages:  # try to revresed the massages
+    for message in reversed(st.session_state.messages):  # try to revresed the massages
         with st.chat_message(message["role"]):
             st.markdown(message["content"])
             if "image_data" in message:
