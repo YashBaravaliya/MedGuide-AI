@@ -10,7 +10,7 @@ Follow these steps to set up and run the MedGuide AI application:
 
 1. **Clone the Repository**  
    ```bash
-   git clone [<repository_url>](https://github.com/YashBaravaliya/MedGuide-AI)
+   git clone https://github.com/YashBaravaliya/MedGuide-AI
    cd MedGuide-AI
    ```
 
